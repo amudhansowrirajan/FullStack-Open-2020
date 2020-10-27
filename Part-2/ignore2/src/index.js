@@ -25,15 +25,37 @@ const notes = [
 ];
 
 ReactDOM.render(<App notes={notes} />, document.getElementById("root"));
+// since we are going to be fetching the data from the Server there is no need to pass the props data to the components.
 
-const result = notes.map((note) => note.content);
-console.log(result);
+////////
+// This is practise for Learning Axios
+////////
+
+// const promise = axios.get("http://localhost:3001/notes").then((response) => {
+//   const notesServer = response.data;
+//   // the variable noteServer is not available outside of the context unless returned to promise
+//   console.log(response, "hello", notesServer, response.headers);
+//   return notesServer;
+// });
+
+/////////
+// below is a not-so-suitable method for rendering data from a server request
+/////////////
+// axios.get("http://localhost:3001/notes").then((response) => {
+//   const notes = response.data;
+//   ReactDOM.render(<App notes={notes} />, document.getElementById("root"));
+// });
+
+// console.log("Promise - single thread", promise);
 
 /////////////////////////////////////////
 /////////////////////////////////////////
 /////////////////////////////////////////
 /////////////////////////////////////////
 /////////////////////////////////////////
+
+// const result = notes.map((note) => note.content);
+// console.log(result);
 
 // import Note from "./components/Note.js";
 

@@ -1,16 +1,5 @@
-h1 {
+.success {
   color: green;
-  font-style: italic;
-}
-
-.note {
-  color: blue;
-  padding-top: 1rem;
-  font-size: 1rem;
-}
-
-.error {
-  color: red;
   background: lightgrey;
   font-size: 20px;
   border-style: solid;
@@ -19,9 +8,9 @@ h1 {
   margin-bottom: 10px;
 }
 
-.success {
-  color: green;
-  background: rgb(191, 233, 151);
+.failure {
+  color: red;
+  background: lightgrey;
   font-size: 20px;
   border-style: solid;
   border-radius: 5px;
