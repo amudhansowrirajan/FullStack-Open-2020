@@ -1,0 +1,13 @@
+GET http://localhost:3001/api/notes
+
+###
+GET http://localhost:3001/api/notes/2
+
+###
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+  "content": "This took so long because of a prettier , in the object beiong send and the parser thought it was an error because was looking for another property and instead found a }",
+  "important": true
+}
