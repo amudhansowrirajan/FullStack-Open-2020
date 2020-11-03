@@ -49,6 +49,7 @@ const App = () => {
       // put request
       const updateID = person.filter((perp) => perp.name === newPerson.name)[0]
         .id;
+      console.log(updateID);
       services
         .updatePersons(updateID, newPerson)
         .then((returnedPerson) => {
