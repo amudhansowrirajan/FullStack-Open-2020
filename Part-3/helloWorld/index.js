@@ -1,6 +1,8 @@
+require("dotenv").config();
 const express = require("express");
-const cors = require("cors");
 
+const cors = require("cors");
+const Note = require("./models/note");
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -31,17 +33,27 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/notes", (req, res) => {
-  res.json(notes);
+  Note.find({}).then((notes) => {
+    res.json(notes);
+  });
 });
 
-app.get("/api/notes/:id", (req, res) => {
+app.get("/api/notes/:id", (req, res, next) => {
   const id = req.params.id;
-  // console.log(id);
-  const note = notes.find((x) => {
-    return x.id === Number(id);
-  });
-  // console.log(note);
-  note ? res.json(note) : res.status(404).end();
+
+  Note.findById(id)
+    .then((note) => {
+      if (note) {
+        response.json(note);
+      } else {
+        response.status(404).end();
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      // response.status(400).send({ error: `malformatted ID` });
+      next(error);
+    });
 });
 
 app.delete("/api/notes/:id", (req, res) => {
@@ -59,7 +71,7 @@ const generateID = () => {
   return maxID + 1;
 };
 
-app.post("/api/notes", (req, res) => {
+app.post("/api/notes", (req, res, next) => {
   const body = req.body;
   // console.log("headers", req, headers);
   // console.log("note", note);
@@ -70,17 +82,34 @@ app.post("/api/notes", (req, res) => {
     });
   }
 
-  const note = {
+  const note = new Note({
     content: body.content,
     important: body.important || false,
     date: new Date(),
-    id: generateID(),
-  };
+    // id: generateID(),
+  });
 
-  notes = notes.concat(note);
-  console.log(notes);
-  res.json(note);
+  note
+    .save()
+    .then((savedNote) => {
+      res.json(savedNote);
+    })
+    .catch((error) => next(error));
 });
+
+const errorHandler = (error, request, response, next) => {
+  console.log(error.message);
+
+  if (error.name === "CastError") {
+    return response.status(400).send({ error: "malformed id" });
+  } else if (error.name === "ValidationError") {
+    return response.status(400).json({ error: error.message });
+  }
+
+  next(error);
+};
+
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

@@ -19,6 +19,18 @@ const App = () => {
     services.getAll().then((allPersons) => setPerson(allPersons));
   }, []);
 
+  const errorHandler = (error) => {
+    console.log("handler:", error);
+    setstatus("failure");
+    setNotice(
+      error.response.data.error ? error.response.data.error : "Invalid Request"
+    );
+    setTimeout(() => {
+      setstatus(null);
+      setNotice(null);
+    }, 3000);
+  };
+
   const handleOnSubmit = (event) => {
     event.preventDefault();
 
@@ -31,16 +43,23 @@ const App = () => {
     const nameArray = person.map((x) => x.name);
 
     if (!nameArray.includes(newPerson.name)) {
-      services.create(newPerson).then((returnedPerson) => {
-        setPerson([...person, returnedPerson]);
-        setstatus("success");
-        setNotice(`${returnedPerson.name} was added successfully`);
+      services
+        .create(newPerson)
+        .then((returnedPerson) => {
+          setPerson([...person, returnedPerson]);
+          setstatus("success");
+          setNotice(`${returnedPerson.name} was added successfully`);
 
-        setTimeout(() => {
-          setstatus(null);
-          setNotice(null);
-        }, 3000);
-      });
+          setTimeout(() => {
+            setstatus(null);
+            setNotice(null);
+          }, 3000);
+        })
+        .catch((error, req, res) => {
+          console.log(error.name, error.message);
+          // console.error(error);
+          errorHandler(error);
+        });
     } else if (
       window.confirm(
         `${newPerson.name} is already added to the Phonebook, replace the old number with the new One`
@@ -49,7 +68,7 @@ const App = () => {
       // put request
       const updateID = person.filter((perp) => perp.name === newPerson.name)[0]
         .id;
-      console.log(updateID);
+      // console.log(updateID);
       services
         .updatePersons(updateID, newPerson)
         .then((returnedPerson) => {
@@ -67,20 +86,22 @@ const App = () => {
             setNotice(null);
           }, 3000);
         })
-        .catch((response) => {
-          console.log(response);
+        .catch((error) => {
+          console.log(error);
           console.log(updateID);
-          setstatus("failure");
-          setNotice(
-            `Information on ${newPerson.name} has already been removed from the server`
-          );
+          // setstatus("failure");
+          // setNotice(
+          //   `Information on ${newPerson.name} cannot be updated, Ivalid credentials`
+          // );
 
-          setTimeout(() => {
-            setstatus(null);
-            setNotice(null);
-          }, 3000);
+          // setTimeout(() => {
+          //   setstatus(null);
+          //   setNotice(null);
+          // }, 3000);
 
-          setPerson(person.filter((perp) => perp.id !== updateID));
+          errorHandler(error);
+
+          // setPerson(person.filter((perp) => perp.id !== updateID));
         });
     }
     setNewName("");
@@ -89,10 +110,13 @@ const App = () => {
 
   const handleDelete = (id, name) => {
     if (window.confirm(`confirm delete: ${name}`)) {
-      services.deletePerson(id).then((response) => {
-        console.log(response);
-        setPerson(person.filter((perp) => perp.id !== id));
-      });
+      services
+        .deletePerson(id)
+        .then((response) => {
+          console.log(response);
+          setPerson(person.filter((perp) => perp.id !== id));
+        })
+        .catch((error) => errorHandler(error));
     }
   };
 
