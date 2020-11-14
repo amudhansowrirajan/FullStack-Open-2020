@@ -1,0 +1,15 @@
+// Description:: get all the blogs
+GET http://localhost:3001/api/blogs
+
+###
+#  Description:: Post to the database
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+  "title": "praxsis",
+  "author": "ein",
+  "url": "www.non.com",
+  "likes": "2353447"
+}
+
