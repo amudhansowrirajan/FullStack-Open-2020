@@ -1,5 +1,5 @@
 const favouriteBlog = require("../utils/list_helper").favouriteBlog;
-const blogvar = require("./blogs");
+const helper = require("./blogs");
 
 const favourite = {
   _id: "5a422b3a1b54a676234d17f9",
@@ -12,13 +12,13 @@ const favourite = {
 
 describe("favourite Blog test", () => {
   test("first of the highest favourited blogs", () => {
-    expect(favouriteBlog(blogvar.blogs)).toEqual(favourite);
+    expect(favouriteBlog(helper.blogs)).toEqual(favourite);
   });
 
   test(" is the result an Object", () => {
-    expect(
-      Object.prototype.toString.call(favouriteBlog(blogvar.blogs))
-    ).toEqual("[object Object]");
+    expect(Object.prototype.toString.call(favouriteBlog(helper.blogs))).toEqual(
+      "[object Object]"
+    );
   });
 
   test("return zero for an empty array", () => {

@@ -1,3 +1,4 @@
+const Blog = require("../models/blog");
 const blogs = [
   {
     _id: "5a422a851b54a676234d17f7",
@@ -52,7 +53,8 @@ const blogs = [
     __v: 0,
   },
 ];
-
+const emptyObject = {};
+const emptyArray = [];
 const listOfOne = [
   {
     _id: "5a422aa71b54a676234d17f8",
@@ -65,12 +67,15 @@ const listOfOne = [
   },
 ];
 
-const emptyObject = {};
-const emptyArray = [];
+const getAllBlogs = async () => {
+  const blogArray = await Blog.find({});
+  return blogArray.map((blog) => blog.toJSON());
+};
 
 module.exports = {
   blogs,
   listOfOne,
   emptyArray,
   emptyObject,
+  getAllBlogs,
 };

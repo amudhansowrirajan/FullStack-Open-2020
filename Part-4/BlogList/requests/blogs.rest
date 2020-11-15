@@ -10,6 +10,23 @@ Content-Type: application/json
   "title": "praxsis",
   "author": "ein",
   "url": "www.non.com",
-  "likes": "2353447"
+  "likes": "1"
 }
 
+###
+#  Description:: delete one
+DELETE http://localhost:3001/api/blogs/5fb1471b8add8d181c815311
+
+
+###
+#  Description:: update one item
+PUT http://localhost:3001/api/blogs/5fb1518d7ddde0331cbd780a
+Content-Type: application/json
+
+{
+  "likes": 7,
+  "title": "praxsis",
+  "author": "ein",
+  "url": "www.non.com",
+  "id": "5fb148e8c219ad0a68e56600"
+}

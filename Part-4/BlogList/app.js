@@ -1,9 +1,11 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+require("express-async-errors");
 const cors = require("cors");
 const blogListRouter = require("./controller/blogList");
 const mongoose = require("mongoose");
+const middleware = require("./utils/middleware");
 
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -22,5 +24,6 @@ mongoose
 app.use(cors());
 app.use(express.json());
 app.use("/api", blogListRouter);
+app.use(middleware.errorHandler);
 
 module.exports = app;

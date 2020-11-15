@@ -1,6 +1,5 @@
 const blogvar = require("../tests/blogs");
 const _ = require("lodash");
-const { uniq, max, first } = require("lodash");
 
 const dummy = (blogs) => {
   return 1;
@@ -95,5 +94,3 @@ module.exports = {
   mostBlogs,
   mostLikes,
 };
-
-mostLikes(blogvar.blogs);
