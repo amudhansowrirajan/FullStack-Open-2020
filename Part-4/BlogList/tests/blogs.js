@@ -1,4 +1,5 @@
 const Blog = require("../models/blog");
+const User = require("../models/users");
 const blogs = [
   {
     _id: "5a422a851b54a676234d17f7",
@@ -72,10 +73,34 @@ const getAllBlogs = async () => {
   return blogArray.map((blog) => blog.toJSON());
 };
 
+////////////////////////////////
+////////////////////////////////
+////////////////////////////////
+////////////////////////////////
+const listOfUsers = [
+  {
+    username: "amudhan",
+    name: "amudhan sowrirajan",
+    password: "password",
+  },
+  {
+    username: "Mangai",
+    name: "Mangai Mangai",
+    password: "passwzxczxcord",
+  },
+];
+
+const getAllUsers = async () => {
+  const userArray = await User.find({});
+  return userArray.map((user) => user.toJSON());
+};
+
 module.exports = {
   blogs,
   listOfOne,
   emptyArray,
   emptyObject,
   getAllBlogs,
+  getAllUsers,
+  listOfUsers,
 };
