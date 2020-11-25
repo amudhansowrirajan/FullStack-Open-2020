@@ -32,7 +32,10 @@ const Blog = (props) => {
         </p>
         <p>
           Likes: {props.blog.likes}{" "}
-          <button onClick={() => props.likeButton(props.blog.id, props.blog)}>
+          <button
+            className="TestLikeButton"
+            onClick={() => props.likeButton(props.blog.id, props.blog)}
+          >
             Like
           </button>
         </p>
@@ -50,7 +53,9 @@ const Blog = (props) => {
 
   return (
     <>
-      <button onClick={handleShowFullBlog}>View</button>
+      <button className="showFullBlog" onClick={handleShowFullBlog}>
+        View
+      </button>
       {showFull ? fullBlog() : blurb()}
     </>
   );
@@ -61,4 +66,5 @@ Blog.propTypes = {
   likeButton: PropTypes.func.isRequired,
   deleteButton: PropTypes.func.isRequired,
 };
+
 export default Blog;

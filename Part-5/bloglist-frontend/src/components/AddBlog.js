@@ -10,6 +10,7 @@ const AddBlog = (props) => {
     <div>
       <h2>Add a Blog</h2>
       <form
+        className="TestAddBlog"
         onSubmit={(e) => {
           e.preventDefault();
           props.submitTo({ title, author, url });
@@ -24,6 +25,7 @@ const AddBlog = (props) => {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            id="title"
             required
           />
         </p>
@@ -33,6 +35,7 @@ const AddBlog = (props) => {
             type="text"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
+            id="author"
             required
           />
         </p>
@@ -43,6 +46,7 @@ const AddBlog = (props) => {
             type="text"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
+            id="url"
             required
           />
         </p>
