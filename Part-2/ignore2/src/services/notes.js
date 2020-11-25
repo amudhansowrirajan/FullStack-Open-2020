@@ -2,6 +2,12 @@ import axios from "axios";
 
 const baseURL = "/api/notes";
 
+let token = null;
+
+const setToken = (newToken) => {
+  token = `bearer ${newToken}`;
+};
+
 const getAll = () => {
   const request = axios.get(baseURL);
   const nonServerNote = {
@@ -13,9 +19,14 @@ const getAll = () => {
   return request.then((response) => response.data.concat(nonServerNote));
 };
 
-const create = (newObject) => {
-  const request = axios.post(baseURL, newObject);
-  return request.then((response) => response.data);
+const create = async (newObject) => {
+  const config = {
+    headers: {
+      Authorization: token,
+    },
+  };
+  const response = await axios.post(baseURL, newObject, config);
+  return response.data;
 };
 
 const update = (id, newObject) => {
@@ -27,5 +38,6 @@ export default {
   getAll,
   create,
   update,
+  setToken,
 };
 // we can do this when the names of the keys and the values are the same.

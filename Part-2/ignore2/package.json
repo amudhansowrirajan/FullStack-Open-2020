@@ -21,7 +21,7 @@
     "server": "json-server -p3001 --watch db.json",
     "build:ui": "rm -rf build ../../../../helloWorld && npm run build --prod && cp -r build ../../../../helloWorld",
     "deploy": "git push origin master",
-    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",    
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",
     "logs:prod": "heroku logs --tail"
   },
   "proxy": "http://localhost:3001",

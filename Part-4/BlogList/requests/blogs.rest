@@ -5,11 +5,11 @@ GET http://localhost:3001/api/blogs
 #  Description:: Post to the database
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hZGZzZGFmIiwiaWQiOiI1ZmI0YjQ3OGY0NDU3ZDNiMzhkZDJmY2QiLCJpYXQiOjE2MDU3MDMwODV9.2LQA-4QWGfnlHCuc_XK0biBrB9c08_QKK4iVQ3Xme9o
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGYiLCJpZCI6IjVmYjllMzQyMzNiMjFiNTM3YzI5NWQ3ZiIsImlhdCI6MTYwNjEyNDA5Nn0.a1Lybi7qcWEmM-OZebOtNdNfJhkeLa0mNxme3cl5R7o
 
 {
-  "title": "psfsdsdffrasdfsdfxsis",
-  "author": "einsdfsdfsdf",
+  "title": "ansdfsdfother",
+  "author": "einsdfsdfsdfsdf",
   "url": "www.non.sdfsdfsdfsdcom",
   "likes": ""
 }
@@ -18,13 +18,14 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hZ
 #  Description:: delete one
 DELETE http://localhost:3001/api/blogs/5fb524e3eb6adc2ed058773f
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hZGZzZGFmIiwiaWQiOiI1ZmI0YjQ3OGY0NDU3ZDNiMzhkZDJmY2QiLCJpYXQiOjE2MDU3MDMwODV9.2LQA-4QWGfnlHCuc_XK0biBrB9c08_QKK4iVQ3Xme9o
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGYiLCJpZCI6IjVmYjllMzQyMzNiMjFiNTM3YzI5NWQ3ZiIsImlhdCI6MTYwNjEyNDA5Nn0.a1Lybi7qcWEmM-OZebOtNdNfJhkeLa0mNxme3cl5R7o"
 
 
 ###
 #  Description:: update one item
-PUT http://localhost:3001/api/blogs/5fb1518d7ddde0331cbd780a
+PUT http://localhost:3001/api/blogs/5fbb828846073b1a882deaff
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGYiLCJpZCI6IjVmYjllMzQyMzNiMjFiNTM3YzI5NWQ3ZiIsImlhdCI6MTYwNjEyNDA5Nn0.a1Ly
 
 {
   "likes": 7,
@@ -40,9 +41,9 @@ POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-  "username": "madfsdaf",
+  "username": "asdf",
   "name": "amudhan sowrirajan",
-  "password": "Pasdasdasd"
+  "password": "asdf"
 }
 ###
 GET http://localhost:3001/api/users
@@ -52,6 +53,6 @@ POST  http://localhost:3001/api/login
 Content-Type: application/json
 
 {
-  "username":"madfsdaf",
-  "password":"Pasdasdasd"
+  "username":"asdf",
+  "password":"asdf"
 }

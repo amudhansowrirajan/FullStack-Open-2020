@@ -45,6 +45,8 @@ blogListRouter.delete("/:id", async (request, response) => {
     return response.status(401).json({ error: "missing or invalid token" });
   }
 
+  console.log("decoded ID", decodedToken.id);
+
   // confirm is the person owns the blog
   const user = await User.findById(decodedToken.id);
   console.log("before", user.blogs);
@@ -68,14 +70,12 @@ blogListRouter.delete("/:id", async (request, response) => {
 });
 
 blogListRouter.put("/:id", async (request, response) => {
+  // anybody can like anything
   const body = request.body;
+
   // console.log("body", body);
   const likesOf = Number(body.likes) + 1;
-  // const blog = {
-  //   ...body,
-  //   likes: likesOf,
-  // };
-  // console.log("blog:", blog);
+
   const updatedNote = await Blog.findByIdAndUpdate(
     request.params.id,
     { likes: likesOf },
@@ -83,7 +83,7 @@ blogListRouter.put("/:id", async (request, response) => {
       new: true,
     }
   );
-  // console.log("updatedNote", updatedNote);
+  console.log("updatedNote", updatedNote);
   response.status(200).json(updatedNote.toJSON());
 });
 

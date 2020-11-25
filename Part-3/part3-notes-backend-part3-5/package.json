@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "watch": "nodemon index.js",
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "build:ui": "rm -rf build && cd ../../Part-2/ignore2 && npm run build --prod && cp -r build ../../Part-3/part3-notes-backend-part3-5"
   },
   "author": "",
   "license": "ISC",
