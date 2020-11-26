@@ -39,7 +39,7 @@ const Blog = (props) => {
             Like
           </button>
         </p>
-        <p>{props.blog.url}</p>
+        <p>URL: {props.blog.url}</p>
         <button
           onClick={() => {
             props.deleteButton(props.blog.id);

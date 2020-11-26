@@ -29,6 +29,12 @@ app.use(middleware.getToken);
 app.use("/api/blogs", blogListRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/login", loginRouter);
+
+if (process.env.NODE_ENV === "test") {
+  const testRouter = require("./controller/testing");
+  app.use("/api/testing", testRouter);
+}
+
 app.use(middleware.errorHandler);
 
 module.exports = app;

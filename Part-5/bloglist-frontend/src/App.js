@@ -5,6 +5,7 @@ import Togglable from "./components/Togglable";
 import AddBlog from "./components/AddBlog";
 import blogService from "./services/blogs";
 import loginService from "./services/login";
+import _ from "lodash";
 
 const App = () => {
   const [blogs, setBlogs] = useState([]);
@@ -124,6 +125,7 @@ const App = () => {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            id="loginUsername"
           />
         </p>
         <p>
@@ -132,9 +134,12 @@ const App = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            id="loginPassword"
           />
         </p>
-        <button type="submit">login</button>
+        <button id="loginButton" type="submit">
+          login
+        </button>
       </form>
     );
   };
@@ -149,7 +154,9 @@ const App = () => {
           <div>
             <p>
               {user.name} is logged in.{" "}
-              <button onClick={handleLogout}>logout</button>
+              <button id="logoutButton" onClick={handleLogout}>
+                logout
+              </button>
             </p>
           </div>
         )}
@@ -161,7 +168,7 @@ const App = () => {
       )}
       <div>
         <h2>blogs</h2>
-        {blogs.map((blog) => (
+        {_.orderBy(blogs, ["likes"], ["desc"]).map((blog) => (
           <Blog
             key={blog.id}
             blog={blog}
