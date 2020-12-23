@@ -9,12 +9,9 @@ const Togglable = React.forwardRef((props, ref) => {
 
   const handleVisibility = () => {
     setVisibility(!visibility);
-    console.log(visibility);
-    return visibility;
   };
 
   useImperativeHandle(ref, () => {
-    console.log("imperativehandle");
     return { handleVisibility };
   });
 
@@ -37,4 +34,5 @@ Togglable.propTypes = {
 };
 
 Togglable.displayName = "Togglable";
+
 export default Togglable;

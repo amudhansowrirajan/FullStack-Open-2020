@@ -1,0 +1,58 @@
+// Description:: get all the blogs
+GET http://localhost:3001/api/blogs
+
+###
+#  Description:: Post to the database
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGYiLCJpZCI6IjVmYjllMzQyMzNiMjFiNTM3YzI5NWQ3ZiIsImlhdCI6MTYwNjEyNDA5Nn0.a1Lybi7qcWEmM-OZebOtNdNfJhkeLa0mNxme3cl5R7o
+
+{
+  "title": "ansdfsdfother",
+  "author": "einsdfsdfsdfsdf",
+  "url": "www.non.sdfsdfsdfsdcom",
+  "likes": ""
+}
+
+###
+#  Description:: delete one
+DELETE http://localhost:3001/api/blogs/5fb524e3eb6adc2ed058773f
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGYiLCJpZCI6IjVmYjllMzQyMzNiMjFiNTM3YzI5NWQ3ZiIsImlhdCI6MTYwNjEyNDA5Nn0.a1Lybi7qcWEmM-OZebOtNdNfJhkeLa0mNxme3cl5R7o"
+
+
+###
+#  Description:: update one item
+PUT http://localhost:3001/api/blogs/5fbb828846073b1a882deaff
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGYiLCJpZCI6IjVmYjllMzQyMzNiMjFiNTM3YzI5NWQ3ZiIsImlhdCI6MTYwNjEyNDA5Nn0.a1Ly
+
+{
+  "likes": 7,
+  "title": "praxsis",
+  "author": "ein",
+  "url": "www.non.com",
+  "id": "5fb148e8c219ad0a68e56600"
+}
+
+# create a new user 
+###
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+  "username": "asdf",
+  "name": "amudhan sowrirajan",
+  "password": "asdf"
+}
+###
+GET http://localhost:3001/api/users
+
+###
+POST  http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username":"asdf",
+  "password":"asdf"
+}

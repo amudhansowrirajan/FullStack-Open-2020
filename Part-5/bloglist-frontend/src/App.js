@@ -99,6 +99,7 @@ const App = () => {
       ...blogObject,
       likes: 0,
     });
+
     console.log(blogPost);
     setBlogs([...blogs, blogPost]);
     setShowNotice(true);
