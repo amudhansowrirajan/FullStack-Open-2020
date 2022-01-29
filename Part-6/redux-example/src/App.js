@@ -1,7 +1,8 @@
-// the reducer is given as a parameter to the createStore function. And reducer takes in a state and action type and returns a new state
+// the reducer is given as a parameter to the createStore function. And reducer takes in a state and action type and returns a new state. Reducers must be pure functions
 // console.log(store.getState());
 // store.dispatch({ type: "INCREMENT" });
-// all actions to the state is dipatched using the store.dispatch method
+// store.subscribe(() => some function ) // this is called everytime the state changes
+// all actions to the state is dispatched using the store.dispatch method
 
 import "./App.css";
 import { createStore } from "redux";

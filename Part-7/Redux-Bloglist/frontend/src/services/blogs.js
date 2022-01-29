@@ -23,6 +23,7 @@ const createBlog = async (blogObject) => {
 
   try {
     const response = await axios.post(baseUrl, blogObject, config);
+     // we send a token everytime there is a post from the front end. 
     return response.data;
   } catch (error) {
     console.log(error.message);

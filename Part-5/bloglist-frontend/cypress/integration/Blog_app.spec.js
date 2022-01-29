@@ -1,4 +1,5 @@
 // const it, cy;
+// we ca also add custom commands
 
 describe("Blog app", function () {
   beforeEach(function () {
